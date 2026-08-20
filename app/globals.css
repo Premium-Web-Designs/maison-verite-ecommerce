@@ -1,0 +1,179 @@
+ @import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+html {
+  scroll-behavior: smooth;
+  background: #EBE7E4;
+  color: #292929;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  background: #EBE7E4;
+}
+
+
+@keyframes hero-zoom {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+
+.animate-hero-zoom {
+  animation: hero-zoom 15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
+
+.slider-hide-scrollbar::-webkit-scrollbar { display: none; }
+.slider-hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Custom cursor */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: #f5f0e8;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 0.3s, height 0.3s, margin 0.3s;
+}
+.cursor-dot.hover {
+  width: 48px;
+  height: 48px;
+  margin-left: -20px;
+  margin-top: -20px;
+  background: transparent;
+  border: 1px solid #f5f0e8;
+}
+
+/* Grid card hover slide */
+.grid-card-secondary {
+  transform: translateX(-101%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.grid-card:hover .grid-card-secondary { transform: translateX(0); }
+.grid-card:hover .grid-card-primary { transform: translateX(101%); }
+.grid-card-primary {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Slide hover */
+.slide-img {
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.slide:hover .slide-img { transform: scale(1.08); }
+.slide-info {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.slide:hover .slide-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Scroll reveal image */
+.scroll-reveal-img {
+  opacity: 0;
+  transform: translateY(80px) scale(0.96);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-reveal-img.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Size button */
+.size-btn {
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.size-btn:hover:not(.disabled) {
+  border-color: #8a8a8a;
+  color: #f5f0e8;
+}
+.size-btn.active {
+  background: #f5f0e8;
+  color: #0a0a0a;
+  border-color: #f5f0e8;
+}
+.size-btn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Nav link underline */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #c9a96e;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+
+/* Tile-wipe overlay: mosaic close/reveal, no single seam to glitch on */
+.tile-wipe-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  pointer-events: none;
+}
+.tile-wipe-cell {
+  background: #EBE7E4;
+  transform: scale(0);
+  will-change: transform;
+}
+
+
+
+/* Tile-wipe overlay: solid curtain guarantees full coverage while closing,
+   tile mosaic only plays on the reveal, once the new page is confirmed ready */
+.tile-wipe-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+}
+.tile-wipe-curtain {
+  position: absolute;
+  inset: 0;
+  background: #EBE7E4;
+  transform: scaleY(0);
+  will-change: transform;
+}
+.tile-wipe-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+}
+.tile-wipe-cell {
+  background: #EBE7E4;
+  transform: scale(0);
+  will-change: transform;
+} 
+
