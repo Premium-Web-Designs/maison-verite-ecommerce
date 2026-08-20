@@ -1,6 +1,6 @@
 # Maison Vérité — Next.js + Tailwind CSS
 
-A premium fashion lifestyle website built with Next.js 15, React 19, and Tailwind CSS.
+A concept e-commerce site built to explore luxury fashion UI patterns: layered scroll reveals, hover-swap product cards, a scroll-locked product gallery, a custom cursor, and a mosaic-tile page transition between routes.
 
 ## Features
 
